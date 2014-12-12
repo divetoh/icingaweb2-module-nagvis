@@ -1,7 +1,9 @@
 icingaweb2-module-nagvis
 ========================
 
-Little module for icingaweb2, to show nagvis in iframe.
+Little module for icingaweb2, to show nagvis in iframe:
+
+![Overview](https://raw.githubusercontent.com/divetoh/icingaweb2-module-nagvis/master/overview.png)
 
 Install
 --------
