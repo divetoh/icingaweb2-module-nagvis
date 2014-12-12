@@ -1,0 +1,17 @@
+<script type='text/javascript'>
+  var nagvis_current_map = '<?= $map ?>';
+  function reload_fr(){
+    var fr = document.getElementById('nagvis_fr');
+    var regex = new RegExp("[\\?&]show=([^&#]*)");
+    var results = regex.exec(fr.contentWindow.location);
+    if (results!=null) {
+      var map = results[1];
+      if (map != nagvis_current_map) {
+        this.history.pushState({icinga: true}, null, 'nagvis?map=' + map);
+        nagvis_current_map = map;
+      }
+    }
+  };
+</script>
+
+<iframe id=nagvis_fr src="<?= $this->url ?>frontend/nagvis-js/index.php<?= $map_get ?>" style="margin-bottom: -10px;" width=100% height=100% marginheight=0 marginwidth=0 wspace=0 frameborder=0 onload="reload_fr();">
