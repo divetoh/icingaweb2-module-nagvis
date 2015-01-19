@@ -1,0 +1,1 @@
+This directory is empty, but it's needed for correct work.
