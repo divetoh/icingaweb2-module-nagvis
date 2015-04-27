@@ -17,18 +17,19 @@ Little module for icingaweb2, to show nagvis in iframe:
 You need to set correct url for hosts, services, hostgroups and service groups in nagvis configuration. Parameter 'urltarget' must be set to "_parent", otherwise icinga web interface will be open inside the frame.
 
 Configuration example:
+````
     hosturl="/icingaweb2/monitoring/host/show?host=[host_name]"
     hostgroupurl="/icingaweb2/monitoring/list/hosts?hostgroup=[hostgroup_name]"
     serviceurl="/icingaweb2/monitoring/service/show?host=[host_name]&service=[service_description]"
     servicegroupurl="/icingaweb2/monitoring/list/services?servicegroup=servicegroup_name"
     urltarget="_parent"
-
+````
 ### Autentication
 
 You can configure nagvis web-interface for access without autentication.
 
 Example for apache:
-
+````
     Listen 80
     Listen 81
     <VirtualHost *:80>
@@ -37,7 +38,7 @@ Example for apache:
         SetEnv REMOTE_USER guest
       </location>
     </VirtualHost>
-
+````
 With this config:
 * http://monitoring/nagvis - automaticaly sign in with user 'guest'
 * http://monitoring:81/nagvis - show login window
@@ -53,9 +54,12 @@ There is no way to hide nagvis menu for one user (or i'm don't find it?). You ca
 * /usr/share/nagvis/share/frontend/nagvis-js/classes/FrontendModUrl.php
 
 Replace:
+````
     $INDEX->setHeaderMenu($HEADER->__toString());
+````
 With:
+````
     global $AUTH;
     if ($AUTH->getUser()!='guest') $INDEX->setHeaderMenu($HEADER->__toString());
-
+````
 Note: This is actual for nagvis version 1.7.10.
